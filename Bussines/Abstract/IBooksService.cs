@@ -18,5 +18,6 @@ namespace Bussines.Abstract
         IResult Update(Books book);
         IDataResult<List<BookDetailsDto>> GetAllDetails();
 
+        IDataResult<List<Books>> GetBySum(decimal min, decimal max);
     } 
 }

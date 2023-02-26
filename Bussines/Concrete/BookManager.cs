@@ -46,7 +46,12 @@ namespace Bussines.Concrete
 
         public IDataResult<Books> GetById(int Id)
         {
-            return new SuccessDataResult<Books>(_BooksDal.Get(b => b.Id == Id),Message.GivenBookListened);
+            return new SuccessDataResult<Books>(_BooksDal.Get(b => b.Id == Id),Message.GivenBookListed);
+        }
+
+        public IDataResult<List<Books>> GetBySum(decimal min, decimal max)
+        {
+           return new SuccessDataResult<List<Books>>(_BooksDal.GetAll(b=>b.Sum>=min&&b.Sum<=max),Message.GivenBookListed);
         }
 
         public IResult Update(Books book)

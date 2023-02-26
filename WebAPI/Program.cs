@@ -10,6 +10,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddSingleton<IBooksService, BookManager>();
 builder.Services.AddSingleton<IBooksDal, EfBooksDal>();
+builder.Services.AddSingleton<ICategoryService, CategoryManager>();
+builder.Services.AddSingleton<ICategoryDal,EfCategoryDal>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
