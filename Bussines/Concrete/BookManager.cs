@@ -1,11 +1,16 @@
 ﻿using Bussines.Abstract;
 using Bussines.Constants;
+using Bussines.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
+using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entity.Concrete;
 using Entity.DTOs;
+using FluentValidation;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,9 +24,11 @@ namespace Bussines.Concrete
         {
             _BooksDal = booksDal;
         }
-
+        [ValidationAspect(typeof(BookValidator))]
         public IResult Add(Books book)
         {
+           
+            
 
             _BooksDal.Add(book);
             return new SuccessResult(Message.BookAdded);
